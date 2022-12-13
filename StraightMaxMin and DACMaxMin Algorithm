@@ -1,0 +1,100 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    
+    int a[10]={2,1,4,5,6,9,10,34,8,11};
+    
+    // To find maximum and minimum element from the array
+    int max=a[0];
+    int min=a[0];
+    
+    for(int i=1;i<10;i++){
+        if(max<a[i]){
+            max=a[i];
+        }
+        else{
+            if(min>a[i]){
+                min=a[i];
+            }
+        }
+    }
+    
+    // Printing the maximum and minimum element from the array
+    cout<<"The maximum element of the array is:"<<max<<endl;
+    cout<<"The minimum element of the array is:"<<min<<endl;
+
+    return 0;
+}
+
+
+//Analysis Purpurse:
+Time Complexity: 0(n)
+Space Complexity: 0(1)
+
+No. of comparisions:
+For Best Case: it will take n-1 comparision
+For Worst Case: it will take 2(n-1) comparision
+For Average Case: it will take 1.5(n-1)
+
+
+Using Divide and Conquer Technique
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int a[10]={2,1,4,5,6,9,10,34,8,11};
+int max=a[0];
+int min=a[0];
+
+tuple<int,int> dacf(int i,int j){
+    if(i==j){
+        return make_tuple(a[i],a[j]);
+    }
+    if(i==j-1){
+        if(a[i]<a[j]){
+            return make_tuple(a[j],a[i]);
+        }
+        else{
+            return make_tuple(a[i],a[j]);
+        }
+    }
+    
+    int mid=(i+j)/2;
+    int max1,min1,max2,min2;
+    tie(max1,min1)=dacf(i,mid);
+    tie(max1,min1)=dacf(mid+1,j);
+    
+    int max,min;
+    if(max1<max2)max=max2;
+    else max=max1;
+    
+    if(min1<min2)min=min1;
+    else min=min2;
+    
+    return make_tuple(max,min);
+}
+
+int main()
+{
+    
+    int max,min;
+    tie(max,min)=dacf(0,9);
+    
+    
+    // Printing the maximum and minimum element from the array
+    cout<<"The maximum element of the array is:"<<max<<endl;
+    cout<<"The minimum element of the array is:"<<min<<endl;
+
+    return 0;
+}
+
+
+// Analysis of the above algorithm
+Space complexity: O(logn)
+Time complexity: 0(n)
+
+Comparision: 
+BC , WC, Avg Case i.e., in every case it is 1.5n-2
+
