@@ -1,0 +1,89 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+
+int main()
+{
+    
+    int a,b;
+    a=2,b=16;
+    int ans=1;
+    for(int i=1;i<=b;i++){
+        ans=ans*a;
+    }
+    
+    cout<<"a raise to power b is"<<ans;
+    
+    
+
+    return 0;
+}
+
+//Analysis:
+TC 0(n) n is the power to which a is raised
+
+-----------------------------------------------------------------------------------------
+
+//Using DAC Technique,....but applicable for only those when power is in power of 2 i.e., x^16 and not x^13 since 13 is not power of 2 therefore algo doesnt works
+#include <bits/stdc++.h>
+using namespace std;
+
+int dacpower(int a,int b){
+    if(b==1)return a;
+    else{
+        int mid=b/2;
+        int c;
+        c=dacpower(a,mid);
+        c=c*c;
+        if(b%2==0)return c;
+        else return c*a;
+    }
+}
+
+int main()
+{
+    
+    int a,b;
+    a=2,b=4;
+    
+    cout<<dacpower(a,b);
+    
+    return 0;
+}
+
+
+//Analysis 
+TC 0(logn)
+SC 0(logn)
+
+------------------------------------------------------------------------------------------------------------------------
+Algorithm which works for every case with less TC
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+ll binpow(ll a,ll b){
+    ll res=1;
+    while(b>0){
+        if(b&1)res=res*a;
+        a=a*a;
+        b=b>>1;
+    }
+    return res;
+}
+
+
+int main()
+{
+    
+    int a,b;
+    a=2,b=5;
+    
+    cout<<binpow(a,b);
+    
+    return 0;
+}
+
