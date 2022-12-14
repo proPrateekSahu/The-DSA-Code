@@ -1,0 +1,104 @@
+//Used DAC and recursion
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+ll BS(ll a[],ll i,ll j, ll x){
+    if(i==j){
+        if(a[i]==x)return i+1;
+        else return -1;
+    }
+    else{
+        ll mid=(i+j)/2;
+        if(a[mid]==x)return mid+1;
+        else{
+            if(x<a[mid]){
+                return BS(a,i,mid-1,x);
+            }
+            else{
+                 return BS(a,mid+1,j,x);
+            }
+        }
+    }
+    
+}
+
+int main()
+{
+    
+    ll a[10]={10,20,30,40,50,60,70,80,90,100};
+    
+    // DAC Binary Search with recursion
+    ll x=100;
+    
+    cout<<BS(a,0,9,x)<<endl;
+    
+    return 0;
+}
+
+//Analysis: TC= O(logn), mogea(1)
+SC O(logn), omega(1)
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+//Since above ALgorithm is tail recursion therefore we can convert recursive to equivalent non recursive program
+// Binary DAC but now non-recursive 
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+ll BS(ll a[],ll i,ll j, ll x){
+    while(i<=j){
+        if(i==j){
+            if(a[i]==x)return i+1;
+            else return -1;
+        }
+        else{
+            ll mid=(i+j)/2;
+            if(a[mid]==x)return mid+1;
+            else{
+                if(x<a[mid])j=mid-1;
+                else i=mid+1;
+            }
+        }
+    }
+    return -1;
+    
+}
+
+int main()
+{
+    
+    ll a[10]={10,20,30,40,50,60,70,80,90,100};
+    
+    // DAC Binary Search without recursion i.e., with while loop
+    ll x=5;
+    
+    cout<<BS(a,0,9,x)<<endl;
+    
+    return 0;
+}
+
+
+//Analysis of above code
+TC=same i.e O(logn) omege(1)
+SC= 0(1)
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Some modal question that are solved by Binary Search are:
+1)i/p:A sorted array of n distinct elements 
+o/p: Find any element a[i] such that a[i]==i
+TC Binary Search
+
+2)i/p: An array of n elements in which some position x all elements are in increasing order and after x all elements are in decreasing order
+o/p: position x
+
+3)i/p: An array of n-elements in which untill some positions all are infinites and after all are intergers
+o/p: position of last infinite 
+
+4)An array of n elements in which until some position all are integers and afterwards infinte(s) (Assume array size is unknown and after array all are $'s)
+o/p: Find position of 1st infinite
+
