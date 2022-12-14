@@ -1,0 +1,117 @@
+//Gready algorithm for find two numbers from a sorted array whose Sum==x in TC O(n) SC O(1)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+
+
+int main()
+{
+    
+    ll a[10]={10,20,30,40,50,60,70,80,90,100};
+    
+    // Given a sorted array
+    ll i=0, j=9;
+    ll sum=110;
+    ll summing=0;
+    bool flag=false;
+    while(i<=j){
+        summing=a[i]+a[j];
+        if(summing==sum){
+            flag=true;
+            cout<<a[i]<<" "<<a[j]<<endl;
+            break;
+        }
+        else{
+            if(summing>sum){
+                j--;
+            }
+            else{
+                i++;
+            }
+        }
+        
+    }
+    if(!flag){
+        cout<<"No such can be found"<<endl;
+    }
+    
+    
+    
+    return 0;
+}
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Similarly for finding 3 numbers from a sorted array whose sum is X.. TC O(n.n)
+
+#include <bits/stdc++.h>
+using namespace std;
+
+#define ll long long
+
+
+
+int main()
+{
+    
+    ll a[10]={10,20,30,40,50,60,70,80,90,100};
+    
+    // Given a sorted array
+    ll i=0,k=1, j=9;
+    ll sum=130;
+    ll summing=0;
+    bool flag=false;
+    while(i<=j){
+        summing=a[i]+a[j]+a[k];
+        if(summing==sum){
+            flag=true;
+            cout<<a[i]<<" "<<a[k]<<" "<<a[j]<<endl;
+            break;
+        }
+        else{
+            if(summing>sum){
+                j--;
+            }
+            else{
+                i++;
+            }
+        }
+        
+    }
+    if(!flag){
+        cout<<"No such can be found"<<endl;
+    }
+    
+    
+    
+    return 0;
+}
+--------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+//Thus concluding for 5 elements from sorted array whose sum ==x ..TC will be O(n^3.n)....i.e., for two elements it take n and reset three elements it will be n^3
+
+
+
+__________________________________________________________________________________________________________________________________________________________
+
+Another variety: 
+For unsorted array:
+First we sort the array nlogn
+Then we apply greedy algorithm n for two element and n^(total elements -2)
+
+__________________________________________________________________________________________________________________________________________________________
+
+**********************************************************************************************************************************************************
+For questions containing to find two numbers whose sum is greater than (i.e., inequality) X from a sorted array
+From Greedy it will take O(1)
+i)If asked to find two / three/.....so on sum ....GREATER than x then sum of two/3/....from LAST if grater than x then we get answer in constant time
+ii)If asked to find two / three/.....so on sum ....LESS than x then sum of two/3/....from START if grater than x then we get answer in constant time
+
+******Same question as previous but now sorted array is not given
+Then
+i)Apply 2/3/..pass of buuble sort=>TC O(n)
+ii)Apply 2/3/..pass of selection sort=>TC O(n)
