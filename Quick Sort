@@ -1,0 +1,43 @@
+// Quick Sort
+#include <bits/stdc++.h>
+#define ll long long
+
+ll a[10]={5,7,1,3,6,4,9,10,11,25};
+using namespace std;
+
+ll partition(ll l,ll r){
+    ll p=l;
+    ll i=l,q=l+1;
+    for(q=l+1;q<=r;q++){
+        if(a[q]<=a[p]){
+            i++;
+            swap(a[i],a[q]);
+        }
+        
+    }
+    swap(a[p],a[i]);
+    return i;
+}
+
+void QuickSort(ll l,ll r){
+    if(l>=r)return;
+    else{
+        ll pivotIndex=partition(l,r);
+        QuickSort(l,pivotIndex-1);
+        QuickSort(pivotIndex+1,r);
+        
+    }
+}
+
+
+int main()
+{
+    QuickSort(0,9);
+    ll n=10;
+    for(ll i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+
+    return 0;
+}
+
