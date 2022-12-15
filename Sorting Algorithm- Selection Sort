@@ -1,0 +1,30 @@
+// Selection Sort
+#include <iostream>
+#define ll long long
+
+using namespace std;
+
+int main()
+{
+    ll a[10]={5,7,1,3,6,4,9,10,11,25};
+    ll n=10;
+    for(ll i=0;i<n;i++){
+        ll minIndex=i;
+        for(ll j=i+1;j<n;j++){
+            if(a[j]<a[minIndex]){
+                minIndex=j;
+            }
+        }
+        swap(a[i],a[minIndex]);
+    }
+    
+    for(ll i=0;i<n;i++){
+        cout<<a[i]<<" ";
+    }
+
+    return 0;
+}
+
+//Analysis 
+TC 0(n^2) every case
+SC 0(1)
