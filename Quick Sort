@@ -41,3 +41,60 @@ int main()
     return 0;
 }
 
+
+
+______________________________________________________________________________________________________________________________________________________
+
+//QuickSort (One side recurion and other side looping)
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+
+
+
+int partition(int a[],int p,int q){
+    int pivot=p;
+    int i=p,j=p+1;
+    for(j;j<=q;j++){
+        if(a[p]>=a[j]){
+            i++;
+            swap(a[i],a[j]);
+        }
+    }
+    swap(a[i],a[p]);
+    return i;
+
+}
+
+
+
+void quickSort(int a[],int p, int q){
+    while(p<=q){
+        if(p==q)return;
+        else{
+            int mid=partition(a,p,q);
+            if(mid-p<q-mid){
+                quickSort(a,p,mid-1);
+                p=mid+1;
+            }
+            else if(mid-p>q-mid){
+                quickSort(a,mid+1,q);
+                q=mid-1;
+            }
+            
+        }
+    }
+}
+
+
+
+int main()
+{
+   int a[]={20,10,15,60,4,7,8,40,80,77};
+    quickSort(a,0,9);
+    for(auto j:a){
+        cout<<j<<" ";
+    }
+    return 0;
+}
