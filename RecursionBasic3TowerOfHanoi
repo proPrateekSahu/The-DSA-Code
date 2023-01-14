@@ -1,0 +1,16 @@
+void tower_Hanoi(char from, char to,char aux , ll n){
+	if(n==0)return;
+
+	tower_Hanoi(from,aux,to,n-1);
+	cout<<"move"<<n<<"th"<<"disc from"<<from<<"to"<<to<<endl;
+	tower_Hanoi(aux,to,from,n-1);
+}
+
+
+int main(){
+	ll n;
+	cin>>n;
+	tower_Hanoi('A','C','B',n);
+//from , to, using which rod ie. Auxilary rod B
+	return 0;
+}
