@@ -1,0 +1,85 @@
+//Printing the sequence the from 1 to n
+
+void incr_seq(ll a){
+	if(a==0){
+		return;
+	}	
+	incr_seq(a-1);
+	cout<<a<<" ";
+
+}
+
+
+int main(){
+	// cout<<"HELLO";
+	// int a,b;
+	// cin>>a>>b;
+	// cout<<binpow(a,b);
+
+
+	ll a;
+	cin>>a;
+	incr_seq(a);
+	return 0;
+}
+
+
+
+_____________________________________________________________________________________________________________________________________________________
+
+//recursive function to print from n to 1 in decresing order
+
+void dec_seq(ll a){
+	if(a==0){
+		return;
+	}
+	cout<<a<<" ";	
+	dec_seq(a-1);
+	
+
+}
+
+
+int main(){
+	// cout<<"HELLO";
+	// int a,b;
+	// cin>>a>>b;
+	// cout<<binpow(a,b);
+
+
+	ll a;
+	cin>>a;
+	dec_seq(a);
+	return 0;
+}
+
+__________________________________________________________________________________________________________________________________________
+
+//Recursive program to print from n to 1 and 1 to n
+
+void inc_dec_seq(ll a){
+	if(a==0){
+		return;
+	}
+	cout<<a<<" ";	
+	inc_dec_seq(a-1);
+	cout<<a<<" ";
+	
+
+}
+
+
+int main(){
+	// cout<<"HELLO";
+	// int a,b;
+	// cin>>a>>b;
+	// cout<<binpow(a,b);
+
+
+	ll a;
+	cin>>a;
+	inc_dec_seq(a);
+	return 0;
+}
+
+
