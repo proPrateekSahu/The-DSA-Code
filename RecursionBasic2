@@ -1,0 +1,46 @@
+//To find all the subsequences of the given string
+
+void sub_seq(string ans,string s, ll n,ll i){
+	if(i==n){cout<<ans<<endl;return;}
+	sub_seq(ans+s[i],s,n,i+1);
+	sub_seq(ans,s,n,i+1);
+}
+
+
+int main(){
+	
+
+	string s;
+	cin>>s;
+	ll n;
+	n=s.length();
+	sub_seq("",s,n,0);
+	return 0;
+}
+
+
+_________________________________________________________________________________________________________________________________________________________
+
+//To find the unique subsequences (if the string contain duplicates characters then the above algo will give repeated subsequences , then we will be use set to store the answer
+
+unordered_set<string>sett;
+void sub_seq(string ans,string s, ll n,ll i){
+	if(i==n){sett.insert(ans);return;}
+	sub_seq(ans+s[i],s,n,i+1);
+	sub_seq(ans,s,n,i+1);
+}
+
+
+int main(){
+	
+	
+	string s;
+	cin>>s;
+	ll n;
+	n=s.length();
+	sub_seq("",s,n,0);
+	for(auto j: sett){
+		cout<<j<<endl;
+	}
+	return 0;
+}
