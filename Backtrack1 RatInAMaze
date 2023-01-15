@@ -1,0 +1,51 @@
+// Used the concept of backtracking 
+
+// Backtracking is said to be done when we get the required result we print the result
+// If in between we got the idea that there is no scope of the ongoing path then we backtrack, ie. to back making the visited of that cell as unvisited
+bool rat (int v[][4],int i,int j,bool vis[][4]){
+	// base condition
+	if(i==4||j==4||v[i][j]==0){
+		return false;
+	}
+	if(i==3 && j==3)return true;//reached the bottom right corner ie. the destination
+
+	// As soon as we enter the cell we mark is as visted by storing true value
+	vis[i][j]=true;
+
+	// If there is a valid path in moving one step down then we return true
+	if(rat(v,i+1,j,vis))return true;
+
+	// If there is a valid path in moving one step right then we return true
+	if(rat(v,i,j+1,vis))return true;
+
+	//If we dont get the valid path then we backtrack as shown below by marking the vis[i][j] as false and returning false that there is no path from this point
+	vis[i][j]=false;
+	return false;
+}
+
+	
+
+
+
+
+int main(){
+	// consider the matrix of 4 X 4 where 0 denotes obstacle in rat's path
+
+	// From 0,0 to 3,3 , rat has to moved
+	int v[4][4]={{1,1,0,1},
+				{1,1,1,1},
+				{1,0,1,1},
+				{1,1,0,1}};
+
+	// taken vis 2 d array which trace the path which is followed to reach the destination
+	bool vis[4][4]={false};
+	cout<<rat(v,0,0,vis);
+    return 0;
+}
+
+//Output:1
+
+
+
+//In output 1 denotes path available to reach the destination
+//In output 0 denotes path available to reach the destination
